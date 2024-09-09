@@ -1,54 +1,66 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 .markdown-content h2 {
-  @apply text-3xl font-bold my-4;
-  font-family: "Merriweather"
+    @apply text-3xl font-bold my-4;
+    font-family: "Merriweather";
 }
 
+.markdown-content a {
+    @apply text-blue-400;
+}
 
-.markdown-content h3  {
-  @apply text-2xl my-4;
-  font-family: "Merriweather"
+.markdown-content h3 {
+    @apply text-2xl my-4;
+    font-family: "Merriweather";
 }
 
 .markdown-content h1 {
-  @apply text-4xl font-bold my-4;
-  font-family: "Merriweather"
+    @apply text-4xl font-bold my-4;
+    font-family: "Merriweather";
 }
 
-
 .markdown-content pre {
-  @apply p-4 my-4 rounded-md bg-gray-900 border-2 border-gray-800;
-  font-family: "IBM Plex Mono"
+    @apply p-4 my-4 rounded-md bg-gray-900 border-2 border-gray-800;
+    font-family: "IBM Plex Mono";
 }
 
 .markdown-content img {
-  @apply my-4 rounded-xl;
+    @apply my-4 rounded-xl;
 }
 
 .markdown-content {
-  @apply text-lg leading-8
+    @apply text-lg leading-8;
+}
+
+.markdown-content ul {
+    @apply list-disc ml-4 text-white marker:text-gray-400;
+}
+.markdown-content ol {
+    @apply list-decimal ml-4 text-white marker:text-gray-400;
+}
+
+.markdown-content .sep {
+    @apply w-full py-[0.3px] px-2 bg-gray-800 my-4;
 }
 
 * {
-  font-family: "IBM Plex Sans";
+    font-family: "IBM Plex Sans";
 }
 
 :root {
---shiki-color-text: #f1f5f9;
---shiki-color-background: transparent;
---shiki-token-constant: #1976d2;
---shiki-token-string: #6ee7b7;
---shiki-token-comment: #475569;
---shiki-token-keyword: #fb7185;
---shiki-token-parameter: #fdba74;
---shiki-token-function: #8b5cf6;
---shiki-token-string-expression: #6ee7b7;
---shiki-token-punctuation: #a5b4fc;
---shiki-token-link: #6ee7b7;
+    --shiki-color-text: #f1f5f9;
+    --shiki-color-background: transparent;
+    --shiki-token-constant: #1976d2;
+    --shiki-token-string: #6ee7b7;
+    --shiki-token-comment: #475569;
+    --shiki-token-keyword: #fb7185;
+    --shiki-token-parameter: #fdba74;
+    --shiki-token-function: #8b5cf6;
+    --shiki-token-string-expression: #6ee7b7;
+    --shiki-token-punctuation: #a5b4fc;
+    --shiki-token-link: #6ee7b7;
 }
-
