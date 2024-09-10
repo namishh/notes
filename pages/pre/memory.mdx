@@ -40,3 +40,40 @@ int main() {
     return 0;
 }
 ```
+
+For this example the memory would look something like this:
+
+![demo](/memory/demo.png)
+
+In the stack, we start from the main function, as the **sumofsquares** function is called, the main stack frame is paused and another stack frame of **sumofsquares** is made.
+
+In the sumofsquares function, the **square** function is called, so another stack frame is made for the **square** function.
+<br/>
+The **square** function returns the value to the **sumofsquares** function and then the **sumofsquares** function returns the value to the main function. As soon as a function returns a value, its stack frame is popped off the stack.
+
+<br/>
+If our call stack grows beyond the given size, it creates a condition called **Stack Overflow** and it will cause the program to crash. This happens frequently when writing bad recursion code.
+
+### Limitations of stack // Heap
+
+1. The stack is of fixed size. It cannot grow during runtime.
+2. The allocation and deallocation happens by a fixed rule of appending and popping. It is not possible to manipulate the scope of a variable
+3. The stack is not flexible. It is not possible to allocate memory at runtime.
+
+<br/>
+Unlike stack, **heap** is not fixed. It's size can vary during the lifetime of the program. Devs get the full control of the memory allocation and deallocation. The heap will **continue to grow** until the system itself runs out of memory (this can be dangerous). The heap is also called the **free store**. Using the heap is also called
+
+### Dynamic Memory Allocation
+
+```c
+int main() {
+    int a; // this goes on the stack
+    int *p;
+    p = (int *)malloc(sizeof(int)); // this goes on the heap
+
+    *p = 37;
+
+    p = (int *)malloc(sizeof(int));
+    *p = 45;
+}
+```
