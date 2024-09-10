@@ -8,9 +8,12 @@ const Layout = (props) => {
       <Head>
         <title>{props.pageOpts.title}</title>
       </Head>
-      <div className=" md:w-1/2 pb-4 border-b-[1px] border-gray-700 w-full xl:w-2/5 flex justify-between items-center">
-        <a href="/" className="text-2xl">
-          algo<span className="text-blue-400 font-bold">chan.</span>
+      <div className=" md:w-1/2 pb-4 border-b-[1px] border-gray-700 w-full xl:w-2/5 flex justify-between items-end">
+        <a href="/" className="text-2xl flex items-end gap-4">
+          <img src="/favicon.jpg" class="h-12 rounded-full" />
+          <div>
+            algo<span className="text-blue-400 font-bold">chan.</span>
+          </div>
         </a>
         <div className="flex gap-5">
           <a href="/about" className="text-xl text-white">

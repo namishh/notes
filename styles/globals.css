@@ -43,8 +43,8 @@
     @apply list-decimal ml-4 text-white marker:text-gray-400;
 }
 
-.markdown-content .sep {
-    @apply w-full py-[0.3px] px-2 bg-gray-800 my-4;
+.markdown-content .seperator {
+    @apply w-full py-[0.8px] px-2 bg-gray-800 my-4;
 }
 
 * {

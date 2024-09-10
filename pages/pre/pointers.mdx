@@ -1,5 +1,90 @@
 ---
-title: new
+type: page
+title: Pointers
+tag: Prerequisite
+author: Namish
 ---
 
-adsfa
+## Pointers
+
+![pointer](/pointers/pointer.png)
+
+I feel like pointers are very easy to understand, but you need to be skilled to use them effectively. But what
+
+### Exactly is a Pointer?
+
+Pointers are exactly what they are named after. It is something that _points_ to something. In this case, pointers point to a location in memory of some other variable.
+
+![memorydiagram](/pointers/basic-memory.png)
+
+Your RAM, the memory has a lot of cells. Let us assume that each cell is of 1 byte. Each cell has an address. The address of the first cell is 0, the second cell is 1, and so on.
+
+When we declare a integer, 4 bytes are allocated to it, for a float, it is also 4 bytes and chars are 1 byte.
+
+```c
+int A;
+float B;
+char C;
+```
+
+The above code will look something like this in memory:
+
+
+![memorydiagram](/pointers/memory-variables.png)
+
+```c
+A = 5;
+```
+
+Now when we assign a value to the variable A, the compiler goes to the lookup table, gets the address of A, which in this case would be 0, and stores the value of 5 in those 4 bytes. Everytime the value of A is called or changed, the compiler goes to the address 0 and does the necessary operations.
+<br/>
+
+Let us now introduce pointers.
+
+```c
+int *P;
+P = &A; // & returns the address of the variable
+```
+
+This can also be said as **P is a pointer to an integer**. In the second line, we are assigning the address of A to P. So now, P points to the address of A which in this case is 0.
+
+This is how the memory currently looks like:
+
+![basic pointer](/pointers/basic-pointer.png)
+
+<br/>
+Now that we have a pointer, we can do a lot of things with it. But first lets print out the pointer. Predict the output.
+
+```c
+printf("%d", P);
+printf("%d", *P);
+```
+
+```
+$ ./main
+0
+5
+```
+
+So we can actually find out the value of A with the notation of *P. This is called **dereferencing a pointer**. Now if we do
+
+```c
+*P = 10;
+printf("%d", A);
+```
+
+```
+$ ./main
+10
+```
+
+We will see that the value of variable A changes.
+
+
+### Pointers and Maths
+
+![maths](/pointers/pointer-maths.png)
+
+We know the value of P is 0. What would be the value of P + 1 ? Well all it does is returns the next availble address for an integer. As the blocks 0 - 3 are already taken by A, the next available address is 4. So the value of P + 1 is 4. Similarly, P + 2 would be 8 and so on.
+
+But what if we tried to print `*(P + 1)`? As we have not allocated any value to the address 4, it would return a garbage value. So it is always better to allocate memory to the address before using it.
