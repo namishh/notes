@@ -24,7 +24,7 @@
 }
 
 .markdown-content pre {
-    @apply p-4 my-4 rounded-md bg-gray-900 border-2 border-gray-800;
+    @apply p-4 my-4 rounded-md bg-gray-900 border-2 border-gray-800 overflow-x-auto;
     font-family: "IBM Plex Mono";
 }
 

@@ -9,19 +9,19 @@ const Layout = (props) => {
         <title>{props.pageOpts.title}</title>
       </Head>
       <div className=" md:w-1/2 pb-4 border-b-[1px] border-gray-700 w-full xl:w-2/5 flex justify-between items-end">
-        <a href="/" className="text-2xl flex items-end gap-4">
-          <img src="/favicon.jpg" class="h-12 rounded-full" />
+        <a href="/" className="md:text-2xl flex text-md items-end gap-4">
+          <img src="/favicon.jpg" className="h-8 md:h-12 rounded-full" />
           <div>
             algo<span className="text-blue-400 font-bold">chan.</span>
           </div>
         </a>
         <div className="flex gap-5">
-          <a href="/about" className="text-xl text-white">
+          <a href="/about" className="text-md md:text-xl text-white">
             about
           </a>
           <a
             href="https://github.com/namishh/algochan"
-            className="text-xl text-blue-400"
+            className="text-md md:text-xl text-blue-400"
           >
             github
           </a>
@@ -31,12 +31,15 @@ const Layout = (props) => {
         {props.children}
       </div>
       <div className=" md:w-1/2 pt-4 border-t-[1px] border-gray-700 w-full xl:w-2/5 flex justify-between items-center">
-        <a href="https://namishh.me" className="text-xl">
+        <a href="https://namishh.me" className="text-md md:text-xl">
           namishh.
         </a>
         <div className="flex gap-5">
-          <a href="https://x.com/namishdev" className="text-lg text-white">
-            x <span class="text-blue-400 ml-2"> (formerly twitter)</span>
+          <a
+            href="https://x.com/namishdev"
+            className="text-md md:text-lg text-white"
+          >
+            x <span className="text-blue-400 ml-2"> (formerly twitter)</span>
           </a>
         </div>
       </div>
