@@ -38,7 +38,7 @@
 }
 
 .markdown-content img {
-    @apply my-4 rounded-xl;
+    @apply my-4 rounded-xl w-full;
 }
 
 .markdown-content {

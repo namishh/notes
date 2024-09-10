@@ -1,8 +1,42 @@
 ---
 type: page
-title: Memory
+title: Memory Management for Dummies
 tag: Prerequisite
 author: Namish
 ---
 
-### coming soon.
+## Memory
+
+![mem](https://raw.githubusercontent.com/cat-milk/Anime-Girls-Holding-Programming-Books/master/C/Ai_Hayasaka_Shinomiya_Kaguya_C_Programming_Language.png)
+
+This chapter focuses on getting you familiar with the memory management in C. This is a very important topic as it is the base of all the data structures and algorithms. First, lets see a very basic overview of your application' memory.
+
+![mem](/memory/memory.png)
+
+As discussed in the [previous entry](/pre/pointers), the application memory is divided into 4 segments. The stack, the heap, the static and the code. The stack is used for storing the local variables, the heap is used for dynamic memory allocation, the static is used for storing the global and static variables and the code is used for storing the instructions.
+
+Let us write some demo code to understand the memory management in C.
+
+```c
+#include <stdio.h>
+
+int total = 0; // global variable
+
+int square(int x) {
+    int y = x * x; // local variable
+    return y;
+}
+
+int sumofsquares(int a, int b) {
+    int x = square(a);
+    int y = square(b);
+    return x + y;
+}
+
+int main() {
+    int a = 3, b = 4;
+    total = sumofsquares(a, b);
+    printf("Total: %d\n", total);
+    return 0;
+}
+```

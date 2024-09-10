@@ -6,7 +6,7 @@ const Layout = (props) => {
   return (
     <div className="text-white min-h-screen py-8 px-8 md:py-16 flex-col gap-4 items-center justify-start flex p-4 bg-gray-950">
       <Head>
-        <title>{props.pageOpts.title}</title>
+        <title>{props.pageOpts.title} | Algochan</title>
       </Head>
       <div className=" md:w-1/2 h-full pb-4 border-b-[1px] border-gray-700 w-full xl:w-2/5 flex justify-between items-end">
         <a href="/" className="md:text-2xl flex text-md items-end gap-4">
@@ -39,7 +39,7 @@ const Layout = (props) => {
             href="https://x.com/namishdev"
             className="text-md md:text-lg text-white"
           >
-            x <span className="text-blue-400 ml-2"> (formerly twitter)</span>
+          <span className="text-blue-400 ml-2">x dot com</span>
           </a>
         </div>
       </div>
