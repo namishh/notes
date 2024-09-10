@@ -88,3 +88,74 @@ We will see that the value of variable A changes.
 We know the value of P is 0. What would be the value of P + 1 ? Well all it does is returns the next availble address for an integer. As the blocks 0 - 3 are already taken by A, the next available address is 4. So the value of P + 1 is 4. Similarly, P + 2 would be 8 and so on.
 
 But what if we tried to print `*(P + 1)`? As we have not allocated any value to the address 4, it would return a garbage value. So it is always better to allocate memory to the address before using it.
+
+### Pointers to Pointers
+
+Let us take a look at the following code
+
+```c
+int A = 5;
+int *P = &A;
+int **Q = &P;
+```
+
+Now this is how the arrangement looks like in memory:
+
+![pointer-to-pointer](/pointers/pointer-to-pointer.png)
+
+This can be read as **Q is a pointer to a pointer to an integer**. So Q points to the address of P, which in turn points to the address of A. This can be chained to any number of pointers.
+
+### Pointers as Arguments
+
+Let us take a look at this code
+
+```c
+void square(int x){
+    printf("%d", &x); // different
+    x = x * x;
+}
+
+int main() {
+    int x = 5;
+    printf("%d", &x); // different
+    square(x);
+    printf("%d", x);
+    return 0;
+}
+```
+
+The output of the code is `5`. Anyone who has done a little bit of C should be able to reach this conclusion. But here is how it actually works.
+
+![pointerarg](/pointers/pointer-arg.png)
+
+There are four parts of an application's memory.
+1. Heap
+2. Stack
+3. Static/Global Vars
+4. The Code
+
+For this code execution, we are mostly going to focus on the stack. Now when the function `square` is called, a new stack frame is created. The value of x is copied to the stack frame and the operations are done on the stack frame. So the value of x in the main function is not changed. We can see that by printing the adresses of x in both functions.
+<br/>
+
+**Stack frames** are just a way to keep track of the function calls. When a function is called, a new stack frame is created and when the function is done, the stack frame is destroyed.
+
+To get the desired the result of squaring the number, we will have to use pointers.
+
+```c
+void square(int *p){
+    *p = (*p) * p;
+}
+
+int main() {
+    int x = 5;
+    square(&x);
+    printf("%d", x); // 25
+    return 0;
+}
+```
+
+So instead of passing the value of x, we are passing the address of x. This method is called **pass/call by reference**. This is because we are passing the reference of the variable x to the function. This is the most common way of using pointers in functions.
+
+This method is also helpful in saving memory because in the earlier implementation, when the `square` function stack frame was called, another 4 bytes had to be allocated for integer. But in this case, only 4 bytes are allocated for the address of x.
+
+### Pointers and Arrays

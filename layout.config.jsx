@@ -8,7 +8,7 @@ const Layout = (props) => {
       <Head>
         <title>{props.pageOpts.title}</title>
       </Head>
-      <div className=" md:w-1/2 pb-4 border-b-[1px] border-gray-700 w-full xl:w-2/5 flex justify-between items-end">
+      <div className=" md:w-1/2 h-full pb-4 border-b-[1px] border-gray-700 w-full xl:w-2/5 flex justify-between items-end">
         <a href="/" className="md:text-2xl flex text-md items-end gap-4">
           <img src="/favicon.jpg" className="h-8 md:h-12 rounded-full" />
           <div>
@@ -27,7 +27,7 @@ const Layout = (props) => {
           </a>
         </div>
       </div>
-      <div className="md:w-1/2 w-full markdown-content xl:w-2/5">
+      <div className="md:w-1/2 w-full grow markdown-content xl:w-2/5">
         {props.children}
       </div>
       <div className=" md:w-1/2 pt-4 border-t-[1px] border-gray-700 w-full xl:w-2/5 flex justify-between items-center">
