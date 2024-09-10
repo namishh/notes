@@ -159,3 +159,115 @@ So instead of passing the value of x, we are passing the address of x. This meth
 This method is also helpful in saving memory because in the earlier implementation, when the `square` function stack frame was called, another 4 bytes had to be allocated for integer. But in this case, only 4 bytes are allocated for the address of x.
 
 ### Pointers and Arrays
+
+![pointer array](/pointers/pointer-array.png)
+
+Let us have an integer array with 5 elements. The overall size of the array would be 20 **consecutive** bytes. If the first element is at address 200, then the second is at 204, the third at 208 and so on.
+
+```c
+int A[5] = {10, 20, 30, 40, 50};
+
+int *P = &A[0]; // This can also be written as int *P = A;
+
+printf("%d", *P); // 10
+printf("%d", *(P + 1)); // 20
+```
+
+We have already seen that P + 1 returns the next available address for an integer. So *(P + 1) returns the value at that address. And P + 1 is 4 more than P. So P + 1 becomes the address of A[1]. By this logic, *(P + 2) would be 30 and so on. We can make out that
+
+```txt
+ITEM at index i = A[i] = *(A + i)
+ADDRESS of item at index i = &A[i] = A + i
+```
+
+### Arrays as Arguments
+
+Take a look at the following code
+
+```c
+int sum(int A[]){
+    int s = 0;
+    int size = sizeof(A)/sizeof(A[0]);
+    for(int i = 0; i < size; i++){
+        s += A[i];
+    }
+    return s;
+}
+
+int main() {
+    int A[5] = {1, 2, 3, 4, 5};
+    printf("%d", sum(A));
+    return 0;
+}
+```
+
+Even though it should be 15, the output is 1. When the compiler sees an array as a function arguement, it does not copy the whole array, it just creates a pointer to the datatype of the array and the compiler copies the address of the first element in the array.
+
+Arrays are always called by **reference**. The compiler implicitly converts the array to a pointer. So the size of the array is not known in the function.
+A much better solution is to pass the size as an argument.
+
+```c
+int sum(int *A, int size){
+    int s = 0;
+    for(int i = 0; i < size; i++){
+        s += A[i];
+    }
+    return s;
+}
+
+
+int main() {
+    int A[5] = {1, 2, 3, 4, 5};
+    int size = sizeof(A)/sizeof(A[0]);
+    printf("%d", sum(A, size)); // works as expected - 15
+    return 0;
+}
+```
+
+### Character Arrays
+
+For most of the part, character arrays are treated the same way as integer arrays. One difference is that the character arrays are always null terminated. This means that the last element of the array is always `\0`. This is used to denote the end of the string.
+
+```c
+char A[4]
+A[0] = 'j';
+A[1] = 'a';
+A[2] = 'k';
+A[3] = 'e';
+
+printf("%s", A); // random garbage because string is not null terminated
+```
+
+instead we have to do
+
+
+```c
+char A[5]
+A[0] = 'j';
+A[1] = 'a';
+A[2] = 'k';
+A[3] = 'e';
+A[4] = '\0';
+
+printf("%s", A); // jake
+```
+
+
+Example of using pointers with character arrays. By now this should be easy to understand.
+
+```c
+void print(char *c) {
+    while (*c != '\0') {
+        printf("%c", *c);
+        c++;
+    }
+}
+
+int main() {
+    char c[20] = "jake";
+    print(c);
+    return 0;
+}
+```
+
+This should be more than enough to understand the basics of pointers. The next part will be about dynamic memory allocation where pointers will sadly return again.
