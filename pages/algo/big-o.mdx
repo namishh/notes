@@ -1,0 +1,54 @@
+---
+type: page
+title: The Big O Notation
+tag: Algorithms
+author: Namish
+---
+
+## The Big O Notation
+
+![big-0](/bigo/big-o.png)
+
+### Need For Big O and Time Complexity
+
+Suppose these two codes written in python. Their task is to find the letter `i` in the word inputted by the user.
+
+```py
+word = input()
+if i in word:
+    print("Found i")
+```
+
+The second code
+
+```py
+word = input()
+for letter in word:
+    if letter == 'i':
+        print("Found i")
+```
+
+Now if we were to run the first code on a piece of junk, and second one on a supercomputer, the supercomputer might execute it faster, but in the terms of Big O, the first code is faster. This is because the first code has a time complexity of `O(1)` and the second code has a time complexity of `O(n)`.
+
+<br/>
+So, Time Complexity is a way to represent how much time an algorithm takes to run, in terms of the input size. How do we see it mathematically? Well we can plot a graph of the time taken by the algorithm to run, against the input size. This graph is called the Time Complexity Graph. So let us take some example code.
+
+```c
+int main() {
+    for (int i = 0; i < n; i++) {
+        printf("Hello, World!");
+    }
+}
+```
+
+Here we can see that `n` and time are directly proportional. Therefore the graph would look something like this. Theta in the graph is called the rate of increase of time taken by the algorithm. And this rate is referred to as the Time Complexity of the algorithm.
+
+![graph](/bigo/simple-graph.png)
+
+### Big O Notation
+
+Big O Notation is a way to represent the time complexity of an algorithm. It is a mathematical notation that describes the limiting behavior of a function when the argument tends **towards a particular value** or **infinity**. It is used to **describe the upper bound** of the time complexity of an algorithm. It's like saying, "The time complexity of this algorithm **will never be more than this.**" We write as O(x), where x is the time complexity of the algorithm. You just need to remember 3 rules while calculating the Big O of an algorithm.
+
+1. Always consider the worst case scenario.
+2. Ignore the constants.
+3. Ignore the lower terms.

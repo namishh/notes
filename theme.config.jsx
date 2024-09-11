@@ -1,11 +1,12 @@
 import React from "react";
 import Head from "next/head";
 
-const Layout = ({ children, pageOpts }) => {
+const Layout = (props) => {
+  const title = `${props.pageOpts.title} | Algochan`;
   return (
     <div className="text-white min-h-screen py-8 px-8 md:py-16 flex-col gap-4 items-center justify-start flex p-4 bg-gray-950">
       <Head>
-        <title>{`${pageOpts.frontMatter.title || "Blog"}`} | Algochan</title>
+        <title>{title}</title>
       </Head>
       <div className=" md:w-1/2 h-full pb-4 border-b-[1px] border-gray-700 w-full xl:w-2/5 flex justify-between items-end">
         <a href="/" className="md:text-2xl flex text-md items-end gap-4">
@@ -27,7 +28,7 @@ const Layout = ({ children, pageOpts }) => {
         </div>
       </div>
       <div className="md:w-1/2 w-full grow markdown-content xl:w-2/5">
-        {children}
+        {props.children}
       </div>
       <div className=" md:w-1/2 pt-4 border-t-[1px] border-gray-700 w-full xl:w-2/5 flex justify-between items-center">
         <a href="https://namishh.me" className="text-md md:text-xl">
