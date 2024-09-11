@@ -79,3 +79,113 @@ int main() {
     *p = 45;
 }
 ```
+
+In the above code, we use the **malloc** function to allocate 4 bytes (sizeof int) on the heap. The malloc function returns a pointer to the allocated memory. And then we assigned the value of 37 to the memory location pointed by p.
+
+So far this is how our memory would look like
+
+![basic](/memory/basic-heap.png)
+
+Now, we allocate another 4 bytes on the heap and assign the value of 45 to it. Notice the word **another**. This means that the previous memory location still lives on the heap and we wasting memory.
+
+![basic](/memory/heap-unwanted.png)
+
+To free this memory we use the **free** function.
+
+```c
+int main() {
+    int a; // this goes on the stack
+    int *p;
+    p = (int *)malloc(sizeof(int)); // this goes on the heap
+
+    *p = 37;
+
+    free(p); // free the memory
+
+    p = (int *)malloc(sizeof(int));
+    *p = 45;
+}
+```
+
+### Malloc, Calloc and Realloc
+
+Malloc takes in a single argument, of type **size_t**, which is a fancy way to say positive integer. That arguement is how many bytes we want to allocate in our memory. Malloc returns a **void pointer** to the allocated memory that we can [cast to any type](https://www.geeksforgeeks.org/c-typecasting).
+
+<br/>
+What if we want to allocate memory for an array of integers with malloc? We can do that by multiplying the size of an integer by the number of elements we want in the array.
+
+```c
+int no_of_elements = 5;
+int *arr = (int *)malloc(no_of_elements * sizeof(int));
+
+// now we can access the elements of the array like this
+*arr = 1; // arr[0] = 1
+*(arr + 1) = 2; // arr[1] = 2
+```
+
+This will allocate consecutive memory locations for 5 integers. Normally you do not want to allocate random number of bytes, and that is why we use **sizeof operator**.
+
+<br/>
+
+**Calloc** is kind of similar to **malloc**, but instead of one, it takes in two arguments. The first argument is the number of elements we want to allocate memory for and the second argument is the size of each element.
+<br/>
+
+**IMP**: Calloc initializes the memory to zero while if we do not initialize the memory allocated by malloc, it will contain garbage values.
+
+```c
+int no_of_elements = 5;
+int *arr = (int *)calloc(no_of_elements, sizeof(int));
+```
+
+<br/>
+
+**Realloc** is used to resize the memory block. It takes in two arguments, the pointer to the memory block and the new size of the memory block. If the new size is greater than the old size, it will allocate new memory and copy the old memory to the new memory. If the new size is smaller than the old size, it will truncate the memory.
+
+```c
+// Changing the size of the memory block from 100 to 1000
+char *ptr;
+ptr = malloc(100);
+ptr = realloc(ptr,1000);
+```
+
+Example code: take a integer from the user and make an array of that size from 0.
+
+```c
+int main() {
+    // take in user input
+    int n;
+    printf("Enter the size of the array: ");
+    scanf("%d", &n);
+
+    // allocate memory for the array with calloc
+    int *arr = (int *)calloc(n, sizeof(int));
+    for (int i = 0; i < n; i++) {
+        arr[i] = i;
+    }
+
+    // print the array
+    for (int i = 0; i < n; i++) {
+        // If we haven't already set the values in array, it would print 0
+        // If we did this with malloc, it would print garbage values
+        printf("%d ", arr[i]);
+    }
+
+    // free the memory
+    free(arr);
+
+    return 0
+}
+```
+
+### Memory Leaks
+
+Memory leaks is a very common occurence with poorly managed dynamic memory allocation. It happens when the programmer forgets to free the memory allocated on the heap. This can lead to the program running out of memory and crashing. To avoid memory leaks, always free the memory after you are done with it.
+
+If you have trouble finding memory leaks in your code, you can use tools like **Valgrind** to help you find them.
+
+```bash
+$ valgrind  --leak-check=full ./executable
+```
+
+<br/>
+Well these are the core concepts of memory management in C. These should be enough to get you started in DSA.
