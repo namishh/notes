@@ -8,14 +8,21 @@
 
 </div>
 
+<br>
 
 These are my DSA notes made open source for everyone to see and learn from. This is my small effort to stop the students from throwing thousands of their precious money away on way overpriced courses that promise them to get a job at the "BIG TECH".
 
 ### Roadmap
 
-- [ ] Prerequisites
+- [x] Prerequisites
   - [x] [Basic Essentials Of Pointers](https://algochan.namishh.me/pre/pointers)
   - [x] [Memory Management For Dummies](https://algochan.namishh.me/pre/memory)
+- [ ] Algorithms
   - [ ] The O That Is Big
+  - [ ] Sorting
+- [ ] Data Structures
+  - [ ] Binary Trees
+  - [ ] B-Trees
+  - [ ] Linked Lists
 
 ... more to come

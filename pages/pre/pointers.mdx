@@ -270,4 +270,137 @@ int main() {
 }
 ```
 
-This should be more than enough to understand the basics of pointers. The next part will be about dynamic memory allocation where pointers will sadly return again.
+### Pointers and Multidimensional Arrays
+
+When we declare a multidimensional array, for example
+
+```c
+int b[2][3];
+```
+
+it means that we have 2 arrays of 3 integers each. The memory is allocated in a row major order. So if the first array is at 200, the second at 212 and so on. So b[1][2] is at 12 + 2 * 4 = 20. In the memory, it kinda looks like this
+
+![multidimensional array](/pointers/pointer-multidimensional.png)
+
+Now if we try to declare
+
+```c
+int *p = b;
+```
+
+We will get an error because *p is pointer to an integer and b will return a pointer to an 1d array of integers. If we print **B** or **&B[0]**, we will get the address of the first array, which in this case is 200. Here we can also notice that we can write
+
+```txt
+B[i][j] = *(B[i] + j) = *(*(B + i) + j)
+```
+
+### Pointers as Function Returns
+
+Take a look at the following C code
+
+```c
+int add(int* a, int* b) {
+    int c = *a + *b;
+    return c;
+}
+
+int main() {
+    int x = 10, y = 5;
+    int z = add(&x, &y);
+    printf("%d", z);
+    return 0;
+}
+```
+
+We know how this code is not efficient because the value of c is copied to z, which is not needed. Instead we can return the address of c. For some reason, I will also add an arbitrary function in between.
+
+```c
+void print() {
+    printf("Hello World!\n");
+}
+
+int* add(int* a, int* b) {
+    int c = *a + *b;
+    return &c;
+}
+
+int main() {
+    int x = 10, y = 5;
+    int *z = add(&x, &y);
+    print();
+    printf("%d", *z);
+    return 0;
+}
+```
+
+Well the expected output should be
+
+```
+Hello World
+15
+```
+
+But we will see that instead of 15, a garbage value is printed in the console. So what even just happened here.
+
+![pointer-return](/pointers/pointer-return.png)
+
+After the function add is called, the stack frame is destroyed and the memory is deallocated. So the address of c is no longer valid. That deallocated memory is then consumed by the print function, and the memory is being overwritten. This is why we get a garbage value.
+
+<br/>
+So the correct way to do this would be to allocate [memory dynamically](/pre/memory). After reading that post, you can solve this by
+
+```c
+void print() {
+    printf("Hello World!\n");
+}
+
+int* add(int* a, int* b) {
+    int* c = (int*)malloc(sizeof(int));
+    *c = *a + *b;
+    return &c;
+}
+
+int main() {
+    int x = 10, y = 5;
+    int *z = add(&x, &y);
+    print();
+    printf("%d", *z);
+    return 0;
+}
+```
+
+### Function Pointers and Callbacks
+
+Pointers can also point to functions. This is useful when we want to pass a function as an argument to another function. Let us just start with a simple example.
+
+```c
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int (*p)(int, int);
+    p = &add;
+    printf("%d", p(2, 3));
+    return 0;
+}
+```
+
+Be sure to put the **\*** in the parenthesis otherwise it would become a function that returns a pointer to an integer. The whole point of using function pointers is so that we can pass functions as arguments to other functions and also to return functions from functions.
+
+```c
+void A() {
+    printf("Hello\n");
+}
+
+void B(void (*ptr)()) { // function pointer as argument
+    ptr(); // call-back function that "ptr" points to
+}
+
+int main() {
+    B(A); // passing address of the function
+    return 0;
+}
+```
+
+This should be more than enough to understand the basics of pointers. The [next part](/pre/memory) will be about dynamic memory allocation where pointers will return again.
