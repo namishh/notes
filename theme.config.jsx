@@ -4,7 +4,7 @@ import Head from "next/head";
 const Layout = (props) => {
   const title = `${props.pageOpts.title} | Notes`;
   return (
-    <div className="min-h-screen py-8 px-8 md:py-16 flex-col text-foreground gap-4 items-center justify-start flex p-4 bg-background">
+    <div className="min-h-screen py-4 px-4 md:py-16 flex-col text-foreground gap-4 items-center justify-start flex bg-background">
       <Head>
         <title>{title}</title>
       </Head>

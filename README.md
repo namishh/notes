@@ -1,16 +1,11 @@
-<div align="center">
-<img src="https://i.imgur.com/qy6b1KD.png">
-
-## Algochan
+## My Notes
 <img src="https://img.shields.io/badge/Nextra-000000.svg?style=for-the-badge&logo=Nextra&logoColor=white">
 <img src="https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white">
 <img src="https://img.shields.io/badge/Markdown-000000.svg?style=for-the-badge&logo=Markdown&logoColor=white">
 
-</div>
-
 <br>
 
-These are my DSA notes made open source for everyone to see and learn from. This is my small effort to stop the students from throwing thousands of their precious money away on way overpriced courses that promise them to get a job at the "BIG TECH".
+My handcrafted DSA and programming notes. Please do not waste your savings on "bhaiya didi" courses.
 
 ### Roadmap
 
