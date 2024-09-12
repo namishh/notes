@@ -2,44 +2,48 @@ import React from "react";
 import Head from "next/head";
 
 const Layout = (props) => {
-  const title = `${props.pageOpts.title} | Algochan`;
+  const title = `${props.pageOpts.title} | Notes`;
   return (
-    <div className="text-white min-h-screen py-8 px-8 md:py-16 flex-col gap-4 items-center justify-start flex p-4 bg-gray-950">
+    <div className="min-h-screen py-8 px-8 md:py-16 flex-col text-foreground gap-4 items-center justify-start flex p-4 bg-background">
       <Head>
         <title>{title}</title>
       </Head>
-      <div className=" md:w-1/2 h-full pb-4 border-b-[1px] border-gray-700 w-full xl:w-2/5 flex justify-between items-end">
-        <a href="/" className="md:text-2xl flex text-md items-end gap-4">
-          <img src="/favicon.jpg" className="h-8 md:h-12 rounded-full" />
-          <div>
-            algo<span className="text-blue-400 font-bold">chan.</span>
-          </div>
+      <div className=" md:w-1/2 h-full pb-6 px-2 border-b-[1px] border-contrast w-full xl:w-2/5 flex justify-between items-end">
+        <a href="/" className="md:text-2xl flex text-md items-center gap-4">
+          <img
+            src="https://avatars.githubusercontent.com/u/68964499?v=4"
+            className="h-10 rounded-full"
+          />
         </a>
-        <div className="flex gap-5">
-          <a href="/about" className="text-md md:text-xl text-white">
+        <div className="flex gap-6 items-center">
+          <a href="/about" className="text-md text-white">
             about
           </a>
           <a
             href="https://github.com/namishh/algochan"
-            className="text-md md:text-xl text-blue-400"
+            className="text-md bg-background-2  px-4 py-2 border-2 border-contrast rounded-md flex items-center gap-2"
           >
-            github
+            <img
+              src="/github.svg"
+              className="h-6 p-[1px] bg-black rounded-full"
+            />
+            <p>source</p>
           </a>
         </div>
       </div>
-      <div className="md:w-1/2 w-full grow markdown-content xl:w-2/5">
+      <div className="md:w-1/2 px-2 w-full grow markdown-content xl:w-2/5">
         {props.children}
       </div>
-      <div className=" md:w-1/2 pt-4 border-t-[1px] border-gray-700 w-full xl:w-2/5 flex justify-between items-center">
+      <div className=" md:w-1/2 pt-4 px-2 border-t-[1px] border-contrast w-full xl:w-2/5 flex justify-between items-center">
         <a href="https://namishh.me" className="text-md md:text-xl">
-          namishh.
+          my web
         </a>
         <div className="flex gap-5">
           <a
             href="https://x.com/namishdev"
             className="text-md md:text-lg text-white"
           >
-            <span className="text-blue-400 ml-2">x dot com</span>
+            <span className="text-contrast ml-2">x dot com</span>
           </a>
         </div>
       </div>

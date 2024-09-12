@@ -6,25 +6,22 @@
 
 .markdown-content h2 {
     @apply text-3xl font-bold my-4;
-    font-family: "Merriweather";
 }
 
 .markdown-content a {
-    @apply text-blue-400;
+    @apply text-muted;
 }
 
 .markdown-content h3 {
     @apply text-2xl my-4;
-    font-family: "Merriweather";
 }
 
 .markdown-content h1 {
     @apply text-4xl font-bold my-4;
-    font-family: "Merriweather";
 }
 
 .markdown-content pre {
-    @apply p-4 my-4 rounded-md bg-gray-900 border-2 border-gray-800 overflow-x-auto;
+    @apply p-4 my-4 rounded-md bg-background-2 border-2 border-surface-2 overflow-x-auto;
     font-family: "Victor Mono";
 }
 
@@ -46,30 +43,30 @@
 }
 
 .markdown-content ul {
-    @apply list-disc ml-4 text-white marker:text-gray-400;
+    @apply list-disc ml-4 text-white marker:text-muted;
 }
 .markdown-content ol {
-    @apply list-decimal ml-4 text-white marker:text-gray-400;
+    @apply list-decimal ml-4 text-white marker:text-muted;
 }
 
 .markdown-content .seperator {
-    @apply w-full py-[0.8px] px-2 bg-gray-800 my-4;
+    @apply w-full pt-[1px] px-2 bg-contrast my-4;
 }
 
 * {
-    font-family: "IBM Plex Sans";
+    font-family: "Geist";
 }
 
 :root {
-    --shiki-color-text: #f1f5f9;
+    --shiki-color-text: #ededed;
     --shiki-color-background: transparent;
-    --shiki-token-constant: #1976d2;
-    --shiki-token-string: #6ee7b7;
-    --shiki-token-comment: #475569;
-    --shiki-token-keyword: #fb7185;
-    --shiki-token-parameter: #fdba74;
-    --shiki-token-function: #8b5cf6;
-    --shiki-token-string-expression: #6ee7b7;
-    --shiki-token-punctuation: #a5b4fc;
-    --shiki-token-link: #6ee7b7;
+    --shiki-token-constant: #52a8ff;
+    --shiki-token-string: #62c073;
+    --shiki-token-comment: #9c9c9c;
+    --shiki-token-keyword: #f75f8f;
+    --shiki-token-parameter: #ffb224;
+    --shiki-token-function: #bf7af0;
+    --shiki-token-string-expression: #62c073;
+    --shiki-token-punctuation: #9c9c9c;
+    --shiki-token-link: #62c073;
 }

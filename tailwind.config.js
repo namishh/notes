@@ -5,9 +5,21 @@ module.exports = {
     "./pages/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./*.jsx"
+    "./*.jsx",
   ],
   theme: {
+    extend: {
+      colors: {
+        background: "#000000",
+        "background-2": "#0a0a0a",
+        surface: "#0f0f0f",
+        "surface-2": "#1a1a1a",
+        foreground: "#ededed",
+        contrast: "#454545",
+        muted: "#9c9c9c",
+        primary: "#52a8ff",
+      },
+    },
   },
   plugins: [],
 };
