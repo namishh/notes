@@ -24,7 +24,7 @@ const Layout = (props) => {
           </a>
           <a
             href="https://github.com/namishh/notes"
-            className="text-md bg-background-2  px-4 py-2 border-2 border-contrast rounded-md flex items-center gap-2"
+            className="text-md bg-background-2 hover:bg-surface-2 transition  px-4 py-2 border-2 border-contrast rounded-md flex items-center gap-2"
           >
             <img
               src="/github.svg"
