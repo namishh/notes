@@ -9,7 +9,7 @@
 }
 
 .markdown-content a {
-    @apply text-muted;
+    @apply text-muted hover:text-foreground transition;
 }
 
 .markdown-content h3 {

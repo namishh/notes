@@ -8,7 +8,7 @@ const Layout = (props) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <div className=" md:w-1/2 h-full pb-6 px-2 border-b-[1px] border-contrast w-full xl:w-2/5 flex justify-between items-end">
+      <div className=" md:w-1/2 h-full pb-6 px-2 border-b-[1px] border-contrast w-full xl:w-2/5 flex justify-between items-center">
         <a href="/" className="md:text-2xl flex text-md items-center gap-4">
           <img
             src="https://avatars.githubusercontent.com/u/68964499?v=4"
@@ -16,11 +16,14 @@ const Layout = (props) => {
           />
         </a>
         <div className="flex gap-6 items-center">
-          <a href="/about" className="text-md text-white">
+          <a
+            href="/about"
+            className="text-md text-muted hover:text-foreground transition"
+          >
             about
           </a>
           <a
-            href="https://github.com/namishh/algochan"
+            href="https://github.com/namishh/notes"
             className="text-md bg-background-2  px-4 py-2 border-2 border-contrast rounded-md flex items-center gap-2"
           >
             <img
@@ -43,7 +46,9 @@ const Layout = (props) => {
             href="https://x.com/namishdev"
             className="text-md md:text-lg text-white"
           >
-            <span className="text-contrast ml-2">x dot com</span>
+            <span className="text-contrast hover:text-foreground transition ml-2">
+              x dot com
+            </span>
           </a>
         </div>
       </div>
