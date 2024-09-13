@@ -110,3 +110,128 @@ For the space complexity, we have A, B, C and i,j,n.
 
 A, B and C are 2 dimensional arrays, therefore they would take **n * n** space. And i, j, n would take **1** space. Therefore the space complexity would be **S(n) = 3n^2 + 3**.
 In terms of Big O, the time complexity would be **O(n^2)** and the space complexity would also be **O(n^2)**.
+
+### Some Rapid Fire Examples
+
+```c
+void fun(int n) {
+    for (int i = 0; i < n; i+=2) {
+        printf("%d", i);
+    }
+}
+```
+
+So what if instead of 1 step increment, it was two steps like shown above? Well the for loop would run for `n/2` times. Therefore the time complexity would be **O(n/2)**. But we ignore the constants, therefore the time complexity would be **O(n)**.
+
+The space complexity would be **S(n) = 2**, so the space complexity would be **O(1)**.
+
+```c
+void fun(int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < i; j++) {
+            printf("%d", i + j);
+        }
+    }
+}
+```
+
+The above code is just a classic double nested loop but instead of j running for n times, it runs for i times. If it confuses you let me illustrate it.
+
+![calculation](/bigo/calc.png)
+
+So this code as well will have the time complexity of **O(n^2)**. Space complexity would be **O(1)**.
+
+```c
+for (int i = 1; i < n; i*=2) {
+    printf("%d", i);
+}
+```
+
+Calculating the time complexity of this code is kind of interesting. So after the code has run, the value of **i** would be greater than **n**. And we also know that the value of I would be a power of 2, let it be **2^k** So after the loop, we can say that
+<br/>
+<div align="center">
+$i >= n$
+
+$i = 2^k$
+
+$2^k >= n$
+
+$k >= log_2(n)$
+</div>
+<br/>
+
+The time complexity would be **O(log(n))**. The space complexity would be **O(1)**. Let us solve another problem this way
+
+```c
+for (int i = 1; i*i < n; i++) {
+    printf("%d", i);
+}
+```
+
+After the loop has run, the value of **i^2** will be greater than **n**
+
+<br/>
+<div align="center">
+$i^2 >= n$
+
+$i >= \sqrt{n}$
+</div>
+<br/>
+
+Therefore the time complexity would be **O(sqrt(n))**. The space complexity would be **O(1)**.
+
+```c
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j*=2) {
+        printf("Hello");
+    }
+}
+```
+
+The inner loop will have a time complexity of **O(log(n))** and the outer loop will have a time complexity of **O(n)**. The time complexity of the code now becomes **O(n * log(n))**. The space complexity would be **O(1)**.
+
+
+### Analysis of IF and WHILE
+
+Time analysis of while loops are similar to that of for loops. Let us examine a while loop
+
+```c
+int i = 0;
+while (i < n) {
+    printf("%d", i);
+    i++;
+}
+```
+
+Like the for loop, the condition check would run for **n+1** times, all the lines in the for loop would run for **n** times, and there is an initialization statement of **i** which will take 1 unit of time. Therefore the time complexity would be **T(n) = 1 + n + 1 + n + n = 3n + 2** or **O(n)**. The space complexity would be **O(1)**.
+
+<br/>
+
+If conditions only divide the execution of code into two parts, which can give varying time complexities for different inputs.
+
+```c
+if (n % 2 == 0) {
+    printf("Even");
+} else {
+    for (int i = 0; i < n; i++) {
+        printf("%d", i);
+    }
+}
+```
+
+So in this case, if the input is even, the time complexity would be **O(1)**, but if the input is odd, the time complexity would be **O(n)**.  So **O(1)** is the best case time complexity and **O(n)** is the worst case time complexity.
+
+### Common Time Complexities
+
+During solving questions, here are some common time complexities that you will encounter. Here are them in order of increasing time complexity.
+<br/>
+
+<div align="center">
+$ O(1) < O(log(n)) < O(\sqrt{n}) < O(n) < O(nlog(n)) < O(n^2) < O(2^n) < O(n!) $
+</div>
+
+<br/>
+
+Here is a rough graph of the time complexities
+
+![graph](/bigo/graph.png)

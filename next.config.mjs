@@ -4,6 +4,7 @@ import nextra from "nextra";
 
 const withNextra = nextra({
   theme: "./theme.config.jsx",
+  latex: true,
 });
 
 export default withNextra({
