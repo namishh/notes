@@ -43,7 +43,7 @@ const Layout = (props) => {
         </a>
         <div className="flex gap-5">
           <a
-            href="https://x.com/namishdev"
+            href="https://x.com/namishh_"
             className="text-md md:text-lg text-white"
           >
             <span className="text-contrast hover:text-foreground transition ml-2">

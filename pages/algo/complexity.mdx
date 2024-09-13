@@ -235,3 +235,66 @@ $ O(1) < O(log(n)) < O(\sqrt{n}) < O(n) < O(nlog(n)) < O(n^2) < O(2^n) < O(n!) $
 Here is a rough graph of the time complexities
 
 ![graph](/bigo/graph.png)
+
+### Asymptotic Notations
+
+Here is the mathematical definition of Big Oh:
+
+<div class="p-4 my-4 md:p-8 bg-background-2 rounded-md" align="center">
+$ f(n) = O(g(n)) \iff \exists c > 0, n_0 > 0 : \forall n \geq n_0, |f(n)| \leq c|g(n)| $
+</div>
+
+In human readable english: it would be defined as -
+
+A function f(n) is said to be Big O of g(n), written as f(n) = O(g(n)), if and only if there exist positive constants c and n₀ such that for all values of n greater than or equal to n₀, the absolute value of f(n) is less than or equal to c times the absolute value of g(n).
+<br/>
+
+Let us suppose we write the inquality
+
+<br/>
+<div align="center">
+$  2n + 2 <= 8n $
+</div>
+<br/>
+
+This inequality is true for all values of n greater than or equal to 1. Here we can see that $2n + 2 = O(n)$ is $f(n)$, and $n$ is $g(n)$. The constants $c$ is 8. Therefore,
+
+<br/>
+<div align="center">
+$  f(n) = O(n) $
+</div>
+<br/>
+
+Now, recalling the series from earlier
+<br/>
+
+<div align="center">
+$ O(1) < O(log(n)) < O(\sqrt{n}) < O(n) < O(nlog(n)) < O(n^2) < O(2^n) < O(n!) $
+</div>
+
+<br/>
+
+**O(n)** is the **average bound** when **f(n) = 2n + 2**, all the Os on the right of it become the **upper bound** and all of them on the left, become the **lower boud**.
+
+<br/>
+
+Now here is the mathematical definition of Big Omega:
+
+<div class="p-4 my-4 md:p-8 bg-background-2 rounded-md" align="center">
+$ f(n) = \Omega(g(n)) \iff \exists c > 0, n_0 > 0 : \forall n \geq n_0, f(n) \geq c \cdot g(n) $
+</div>
+
+The only difference between Big Oh and Big Omega is the reverse inequality sign. Big Omega is used to define the **lower bound** of a function. and there is also the theta notation.
+
+And then there is also the big theta notation
+
+<div class="p-4 my-4 md:p-8 bg-background-2 rounded-md" align="center">
+$ f(n) = \Theta(g(n)) \iff \exists c_1, c_2 > 0, n_0 > 0 : \forall n \geq n_0, c_1 \cdot g(n) \leq f(n) \leq c_2 \cdot g(n) $
+</div>
+
+or in mathematical terms:
+
+A function f(n) is said to be Big Theta of g(n), written as f(n) = Θ(g(n)), if and only if there exist positive constants c₁, c₂, and n₀ such that for all values of n greater than or equal to n₀, c₁ times g(n) is less than or equal to f(n), which in turn is less than or equal to c₂ times g(n).
+
+Big Theta notation provides both an upper and lower bound on the growth rate of a function. It's used when a function grows at exactly the same rate as another function, up to constant factors. In algorithm analysis, Big Theta gives the exact order of growth for an algorithm's time or space complexity.
+
