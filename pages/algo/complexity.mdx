@@ -9,6 +9,10 @@ author: Namish
 
 ![big-0](/bigo/big-o.png)
 
+<div className="bg-primary/10 rounded-md border-[1px] border-primary text-foreground p-3">
+  The later parts of this document will contain some high school level mathematics. If you are not comfortable with that, I would highly recommend you to go through the chapter "Relations and Functions".
+</div>
+
 ### Need For Big O and Time Complexity
 
 Suppose these two codes written in python. Their task is to find the letter **i** in the word inputted by the user.
@@ -240,7 +244,7 @@ Here is a rough graph of the time complexities
 
 Here is the mathematical definition of Big Oh:
 
-<div class="p-4 my-4 md:p-8 bg-background-2 rounded-md" align="center">
+<div className="p-4 my-4 md:p-8 bg-background-2 rounded-md" align="center">
 $ f(n) = O(g(n)) \iff \exists c > 0, n_0 > 0 : \forall n \geq n_0, |f(n)| \leq c|g(n)| $
 </div>
 
@@ -280,7 +284,7 @@ $ O(1) < O(log(n)) < O(\sqrt{n}) < O(n) < O(nlog(n)) < O(n^2) < O(2^n) < O(n!) $
 
 Now here is the mathematical definition of Big Omega:
 
-<div class="p-4 my-4 md:p-8 bg-background-2 rounded-md" align="center">
+<div className="p-4 my-4 md:p-8 bg-background-2 rounded-md" align="center">
 $ f(n) = \Omega(g(n)) \iff \exists c > 0, n_0 > 0 : \forall n \geq n_0, f(n) \geq c \cdot g(n) $
 </div>
 
@@ -288,7 +292,7 @@ The only difference between Big Oh and Big Omega is the reverse inequality sign.
 
 And then there is also the big theta notation
 
-<div class="p-4 my-4 md:p-8 bg-background-2 rounded-md" align="center">
+<div className="p-4 my-4 md:p-8 bg-background-2 rounded-md" align="center">
 $ f(n) = \Theta(g(n)) \iff \exists c_1, c_2 > 0, n_0 > 0 : \forall n \geq n_0, c_1 \cdot g(n) \leq f(n) \leq c_2 \cdot g(n) $
 </div>
 
@@ -298,3 +302,51 @@ A function f(n) is said to be Big Theta of g(n), written as f(n) = Θ(g(n)), if 
 
 Big Theta notation provides both an upper and lower bound on the growth rate of a function. It's used when a function grows at exactly the same rate as another function, up to constant factors. In algorithm analysis, Big Theta gives the exact order of growth for an algorithm's time or space complexity.
 
+Let us take some polynomial functions to understand the concept of aympotic notations.
+
+<div align="center" className="my-5">
+$ f(n) = 2n^2 + 3n + 4 $
+</div>
+
+Now for all positive integers values of n,
+
+<div align="center" className="my-5">
+$ 2n^2 + 3n + 4 <= 2n^2 + 3n \times n + 4 \times n^2 $
+</div>
+
+and this could further be simplified to
+
+<div align="center" className="my-5">
+$ 2n^2 + 3n + 4  <= 9n^2 $
+</div>
+
+Now $ g() $ becomes $ n^2 $ and $ c $ becomes 9.
+
+Therefore, $f(n) = O(n^2)$ This is the Big-Oh.
+<br/>
+
+Now for the same function, I can also say:
+
+<div align="center" className="my-5">
+$ 2n^2 + 3n + 4 >= 1 \times n^2 $
+</div>
+
+and also:
+
+<div align="center" className="my-5">
+$ 1 \times n^2 <= 2n^2 + 3n + 4 <= 9n^2  $
+</div>
+
+So the big omega would be $f(n) = \Omega(n^2)$ and big theta would also be $f(n) = \Theta(n^2)$
+
+### Properties of Asymptotic Notations
+
+1. If we multiply a function by a constant, the time complexity remains the same.
+2. Transitive property: If $f(n) = O(g(n))$ and $g(n) = O(h(n))$, then $f(n) = O(h(n))$
+3. Reflexive property: $f(n) = O(f(n))$
+4. Symmetric property: If $f(n) = \Theta(g(n))$, then $g(n) = \Theta(f(n))$. This property is only valid for Big Theta.
+5. Transpose Symmetric property: If $f(n) = O(g(n))$, then $g(n) = \Omega(f(n))$.
+
+<br/>
+
+And this concludes the Big O notation and the asymptotic notations. I hope you have a better understanding of the time complexities and the asymptotic notations. If you have any questions, always feel free to ask me on [x](https://x.com/namishh_).

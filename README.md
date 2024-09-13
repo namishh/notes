@@ -12,15 +12,13 @@ My handcrafted DSA and programming notes. Please do not waste your savings on "b
 
 ### Roadmap
 
-- [x] Prerequisites
-  - [x] [Basic Essentials Of Pointers](https://algochan.namishh.me/pre/pointers)
-  - [x] [Memory Management For Dummies](https://algochan.namishh.me/pre/memory)
-- [ ] Algorithms
-  - [ ] The O That Is Big
-  - [ ] Sorting
-- [ ] Data Structures
-  - [ ] Binary Trees
-  - [ ] B-Trees
-  - [ ] Linked Lists
+- Prerequisites
+  - [x] [Basic Essentials Of Pointers](https://notes.namishh.me/pre/pointers)
+  - [x] [Memory Management For Dummies](https://notes.namishh.me/pre/memory)
+- Algorithms
+  - [x] [Time Complexity](https://notes.namishh.me/algo/complexity)
+- Data Structures
+  - [ ] Queues
+  - [ ] Stacks
 
 ... more to come
