@@ -1,0 +1,61 @@
+---
+type: page
+title: Binary Trees and B-Trees
+tag: Data Structures
+author: Namish
+---
+
+## Trees
+
+![tree-header](/trees/tree-header.png)
+
+<div className="bg-surface-blue/30 rounded-r-md border-l-[1px] my-6 border-primary text-primary text-[16px] p-3">
+This is my first post on any data strcuture. Normally a person would have started with something sane like Linked Lists, but I needed to learn about trees for a project I was working on. So, here we are.
+</div>
+
+Trees are a kind of non-linear data structure that is used to store data in a hierarchical manner.
+
+Some of the basic terminologies that would be common for **alls kinds of trees**:
+
+1. **Root**: The topmost node in a tree. In the above example, it is **7**.
+2. **Parent**: A node that has children. In the above example, **4** is the parent of of **3** and **9**. Each Root is a parent but not all parents are roots.
+3. **Child**: A node that has a parent. In the above example, **3** and **9** are children of **4**.
+4. **Leaf / External Node**: A node that has no children. In the above example, **3**, **5** and **9** are leaves.
+5. **Siblings**: Nodes that share the same parent. In the above example, **3** and **9** are siblings.
+6. **Internal Node**: A single element in a tree that has atleast 1 child. In the above example, **4** is a node.
+7. **Depth Of A Node**: Can be defined as the number of branches between the node and the root.
+8. **Height Of A Node**: Can be defined as the number of branches between the node and the deepest leaf.
+9. **Ancestor**: A node that lies on the path between the root and the node. In the above example, **4** is an ancestor of **3**.
+10. **Descendant**: A node that lies on the path between the node and the leaf. In the above example, **3** is a descendant of **4**.
+11. **Degree Of A Node**: The number of children a node has.
+12. **Degree Of A Tree**: The maximum degree of a node in the tree among all the other nodes.
+<br/>
+If a tree has **n** nodes, it will have **n-1** edges.
+
+## Binary Trees
+
+![valid-bintree](/trees/valid-bintree.png)
+
+Binary is a type of tree in which each node has atmost 2 children i.e it has a **degree of 2**. The children are referred to as the **left child** and the **right child**.
+
+The left child is **always smaller than the parent** and the right child is always **greater than the parent**.
+
+
+### Types Of Binary Trees
+
+![types-of-binary-trees](/trees/types-of-binary-trees.png)
+
+1. **Full / Strict Binary Tree**: A binary tree in which each node has either 0 or 2 children.
+
+2. **Perfect Binary Tree**: A binary tree in which all the internal nodes have a degree of 2 and all the leaves are at the same level.
+
+3. **Complete Binary Tree**: A binary tree in which all the levels are completely filled except for the last level. The last level is filled from left to right.
+
+4. **Degenerate / Pathological Tree**: A tree in which each parent has only one child. It is basically a linked list.
+
+5. **Skewed Binary Tree**: A tree in which all the nodes have only one child in one specific direction. It is a special case of a degenerate tree.
+
+
+### Representation Of Binary Trees
+
+The first and the worse way of representing a binary tree is by using arrays. 

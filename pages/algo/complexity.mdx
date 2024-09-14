@@ -4,12 +4,13 @@ title: The Big O Notation
 tag: Algorithms
 author: Namish
 ---
+import Diagram from "../../comp/diagram.jsx"
 
 ## Time and Space Complexity
 
 ![big-0](/bigo/big-o.png)
 
-<div className="bg-surface-blue/30 border-l-[1px] border-primary text-primary text-[16px] p-3">
+<div className="bg-blue-300/10 dark:bg-surface-blue/30 border-l-[1px] rounded-r-md border-primary dark:text-primary text-blue-500 text-[16px] p-3">
   The later parts of this document will contain some high school level mathematics. If you are not comfortable with that, I would highly recommend you to go through the chapter "Relations and Functions".
 </div>
 
@@ -47,7 +48,7 @@ int main() {
 
 Here we can see that **n** and time are directly proportional. Therefore the graph would look something like this. Theta in the graph is called the rate of increase of time taken by the algorithm. And this rate is referred to as the Time Complexity of the algorithm.
 
-![graph](/bigo/simple-graph.png)
+<Diagram src="/bigo/simple-graph.png" />
 
 Similarly space complexity is a way to represent how much space an algorithm takes to run, in terms of the input size. It is also represented in terms of the input size.
 
@@ -141,7 +142,7 @@ void fun(int n) {
 
 The above code is just a classic double nested loop but instead of j running for n times, it runs for i times. If it confuses you let me illustrate it.
 
-![calculation](/bigo/calc.png)
+<Diagram src="/bigo/calc.png" />
 
 So this code as well will have the time complexity of **O(n^2)**. Space complexity would be **O(1)**.
 
@@ -238,13 +239,13 @@ $ O(1) < O(log(n)) < O(\sqrt{n}) < O(n) < O(nlog(n)) < O(n^2) < O(2^n) < O(n!) $
 
 Here is a rough graph of the time complexities
 
-![graph](/bigo/graph.png)
+<Diagram src="/bigo/graph.png" />
 
 ### Asymptotic Notations
 
 Here is the mathematical definition of Big Oh:
 
-<div className="p-4 my-4 md:p-8 bg-background-2 rounded-md" align="center">
+<div className="p-4 my-4 md:p-8 bg-neutral-100 dark:bg-background-2 rounded-md" align="center">
 $ f(n) = O(g(n)) \iff \exists c > 0, n_0 > 0 : \forall n \geq n_0, |f(n)| \leq c|g(n)| $
 </div>
 
@@ -284,7 +285,7 @@ $ O(1) < O(log(n)) < O(\sqrt{n}) < O(n) < O(nlog(n)) < O(n^2) < O(2^n) < O(n!) $
 
 Now here is the mathematical definition of Big Omega:
 
-<div className="p-4 my-4 md:p-8 bg-background-2 rounded-md" align="center">
+<div className="p-4 my-4 md:p-8 bg-neutral-100 dark:bg-background-2 rounded-md" align="center">
 $ f(n) = \Omega(g(n)) \iff \exists c > 0, n_0 > 0 : \forall n \geq n_0, f(n) \geq c \cdot g(n) $
 </div>
 
@@ -292,7 +293,7 @@ The only difference between Big Oh and Big Omega is the reverse inequality sign.
 
 And then there is also the big theta notation
 
-<div className="p-4 my-4 md:p-8 bg-background-2 rounded-md" align="center">
+<div className="p-4 my-4 md:p-8 bg-neutral-100 dark:bg-background-2 rounded-md" align="center">
 $ f(n) = \Theta(g(n)) \iff \exists c_1, c_2 > 0, n_0 > 0 : \forall n \geq n_0, c_1 \cdot g(n) \leq f(n) \leq c_2 \cdot g(n) $
 </div>
 

@@ -9,7 +9,7 @@
 }
 
 .markdown-content a {
-    @apply text-muted hover:text-foreground transition;
+    @apply text-gray-600 hover:text-neutral-900 dark:text-muted dark:hover:text-foreground transition;
 }
 
 .markdown-content h3 {
@@ -21,7 +21,7 @@
 }
 
 .markdown-content pre {
-    @apply p-4 my-4 rounded-md bg-background-2 border-2 border-surface-2 overflow-x-auto;
+    @apply p-4 my-4 rounded-md bg-neutral-100 dark:bg-background-2 border-2 border-neutral-200 dark:border-surface-2 overflow-x-auto;
     font-family: "Victor Mono";
 }
 
@@ -38,19 +38,23 @@
     @apply my-4 rounded-xl w-full;
 }
 
+.markdown-content .diagram {
+    @apply my-4 rounded-xl w-full invert dark:invert-0 transition;
+}
+
 .markdown-content {
     @apply text-lg leading-8;
 }
 
 .markdown-content ul {
-    @apply list-disc ml-4 text-white marker:text-muted;
+    @apply list-disc ml-4  marker:text-muted;
 }
 .markdown-content ol {
-    @apply list-decimal ml-4 text-white marker:text-muted;
+    @apply list-decimal ml-4  marker:text-muted;
 }
 
 .markdown-content .seperator {
-    @apply w-full pt-[1px] px-2 bg-contrast my-4;
+    @apply w-full pt-[1px] px-2 bg-neutral-200  dark:bg-contrast my-4;
 }
 
 * {
@@ -58,6 +62,20 @@
 }
 
 :root {
+    --shiki-color-text: #171717;
+    --shiki-color-background: transparent;
+    --shiki-token-constant: #52a8ff;
+    --shiki-token-string: #059669;
+    --shiki-token-comment: #404040;
+    --shiki-token-keyword: #e11d48;
+    --shiki-token-parameter: #eab308;
+    --shiki-token-function: #6d28d9;
+    --shiki-token-string-expression: #059669;
+    --shiki-token-punctuation: #404040;
+    --shiki-token-link: #059669;
+}
+
+:root.dark {
     --shiki-color-text: #ededed;
     --shiki-color-background: transparent;
     --shiki-token-constant: #52a8ff;

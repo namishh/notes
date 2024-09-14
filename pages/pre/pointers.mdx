@@ -4,6 +4,7 @@ title: Basic Essentials of Pointers
 tag: Prerequisite
 author: Namish
 ---
+import Diagram from "../../comp/diagram.jsx"
 
 ## Pointers
 
@@ -15,7 +16,7 @@ I feel like pointers are very easy to understand, but you need to be skilled to 
 
 Pointers are exactly what they are named after. It is something that _points_ to something. In this case, pointers point to a location in memory of some other variable.
 
-![memorydiagram](/pointers/basic-memory.png)
+<Diagram src="/pointers/basic-memory.png"/>
 
 Your RAM, the memory has a lot of cells. Let us assume that each cell is of 1 byte. Each cell has an address. The address of the first cell is 0, the second cell is 1, and so on.
 
@@ -30,7 +31,7 @@ char C;
 The above code will look something like this in memory:
 
 
-![memorydiagram](/pointers/memory-variables.png)
+<Diagram src="/pointers/memory-variables.png"/>
 
 ```c
 A = 5;
@@ -50,7 +51,7 @@ This can also be said as **P is a pointer to an integer**. In the second line, w
 
 This is how the memory currently looks like:
 
-![basic pointer](/pointers/basic-pointer.png)
+<Diagram src="/pointers/basic-pointer.png"/>
 
 <br/>
 Now that we have a pointer, we can do a lot of things with it. But first lets print out the pointer. Predict the output.
@@ -83,7 +84,7 @@ We will see that the value of variable A changes.
 
 ### Pointers and Maths
 
-![maths](/pointers/pointer-maths.png)
+<Diagram src="/pointers/pointer-maths.png"/>
 
 We know the value of P is 0. What would be the value of P + 1 ? Well all it does is returns the next availble address for an integer. As the blocks 0 - 3 are already taken by A, the next available address is 4. So the value of P + 1 is 4. Similarly, P + 2 would be 8 and so on.
 
@@ -101,7 +102,7 @@ int **Q = &P;
 
 Now this is how the arrangement looks like in memory:
 
-![pointer-to-pointer](/pointers/pointer-to-pointer.png)
+<Diagram src="/pointers/pointer-to-pointer.png"/>
 
 This can be read as **Q is a pointer to a pointer to an integer**. So Q points to the address of P, which in turn points to the address of A. This can be chained to any number of pointers.
 
@@ -126,7 +127,7 @@ int main() {
 
 The output of the code is `5`. Anyone who has done a little bit of C should be able to reach this conclusion. But here is how it actually works.
 
-![pointerarg](/pointers/pointer-arg.png)
+<Diagram src="/pointers/pointer-arg.png"/>
 
 There are four parts of an application's memory.
 1. Heap
@@ -160,7 +161,7 @@ This method is also helpful in saving memory because in the earlier implementati
 
 ### Pointers and Arrays
 
-![pointer array](/pointers/pointer-array.png)
+<Diagram src="/pointers/pointer-array.png"/>
 
 Let us have an integer array with 5 elements. The overall size of the array would be 20 **consecutive** bytes. If the first element is at address 200, then the second is at 204, the third at 208 and so on.
 
@@ -280,7 +281,7 @@ int b[2][3];
 
 it means that we have 2 arrays of 3 integers each. The memory is allocated in a row major order. So if the first array is at 200, the second at 212 and so on. So b[1][2] is at 12 + 2 * 4 = 20. In the memory, it kinda looks like this
 
-![multidimensional array](/pointers/pointer-multidimensional.png)
+<Diagram src="/pointers/pointer-multidimensional.png"/>
 
 Now if we try to declare
 
@@ -342,7 +343,7 @@ Hello World
 
 But we will see that instead of 15, a garbage value is printed in the console. So what even just happened here.
 
-![pointer-return](/pointers/pointer-return.png)
+<Diagram src="/pointers/pointer-return.png"/>
 
 After the function add is called, the stack frame is destroyed and the memory is deallocated. So the address of c is no longer valid. That deallocated memory is then consumed by the print function, and the memory is being overwritten. This is why we get a garbage value.
 
