@@ -4,12 +4,13 @@ title: Binary Trees and B-Trees
 tag: Data Structures
 author: Namish
 ---
+import Diagram from "../../comp/diagram.jsx"
 
 ## Trees
 
-![tree-header](/trees/tree-header.png)
+<Diagram src="/trees/tree-header.png"/>
 
-<div className="bg-surface-blue/30 rounded-r-md border-l-[1px] my-6 border-primary text-primary text-[16px] p-3">
+<div className="bg-blue-300/10 dark:bg-surface-blue/30 border-l-[1px] rounded-r-md border-primary dark:text-primary text-blue-500 text-[16px] p-3">
 This is my first post on any data strcuture. Normally a person would have started with something sane like Linked Lists, but I needed to learn about trees for a project I was working on. So, here we are.
 </div>
 
@@ -34,7 +35,7 @@ If a tree has **n** nodes, it will have **n-1** edges.
 
 ## Binary Trees
 
-![valid-bintree](/trees/valid-bintree.png)
+<Diagram src="/trees/valid-bintree.png"/>
 
 Binary is a type of tree in which each node has atmost 2 children i.e it has a **degree of 2**. The children are referred to as the **left child** and the **right child**.
 
@@ -43,7 +44,7 @@ The left child is **always smaller than the parent** and the right child is alwa
 
 ### Types Of Binary Trees
 
-![types-of-binary-trees](/trees/types-of-binary-trees.png)
+<Diagram src="/trees/types-of-binary-trees.png"/>
 
 1. **Full / Strict Binary Tree**: A binary tree in which each node has either 0 or 2 children.
 
@@ -58,4 +59,4 @@ The left child is **always smaller than the parent** and the right child is alwa
 
 ### Representation Of Binary Trees
 
-The first and the worse way of representing a binary tree is by using arrays. 
+The first and the worse way of representing a binary tree is by using arrays.
