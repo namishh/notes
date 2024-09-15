@@ -9,7 +9,7 @@
 }
 
 .markdown-content a {
-    @apply text-gray-600 hover:text-neutral-900 dark:text-muted dark:hover:text-foreground transition;
+    @apply text-neutral-600 hover:text-neutral-900 dark:text-muted dark:hover:text-foreground transition;
 }
 
 .markdown-content h3 {
