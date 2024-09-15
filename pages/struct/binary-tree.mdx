@@ -131,3 +131,74 @@ Now we can attach these newly created nodes to the root
 root->left = p1;
 root->right = p2;
 ```
+
+### Traversing A Binary Tree
+
+There are mainly three ways to traverse a binary tree, **Preorder**, **Inorder** and **Postorder**. Preorder visits the root first, then left and right subtrees. Inorder visits the left subtree, then the root, and finally the right subtree. Postorder visits left and right subtrees before the root.
+
+<Diagram src="/trees/traversal.png"/>
+
+Taking the same example as above we would get
+
+```
+Preorder: 6, 2, 4, 3, 1, 5
+```
+
+1. Start at the root (6)
+2. Visit the left subtree (2, 4)
+3. Visit the right subtree (3, 1, 5)
+
+<br/>
+```
+Inorder: 4, 2, 6, 1, 3, 5
+```
+
+1. Visit the left subtree (4, 2)
+2. Visit the root (6)
+3. Visit the right subtree (1, 3, 5)
+
+<br/>
+```
+Postorder: 4, 2, 1, 5, 3, 6
+```
+
+1. Visit the left subtree (4, 2)
+2. Visit the right subtree (1, 5, 3)
+3. End at the root (6)
+
+C code for preorder traversal would be:
+
+```c
+void traverse_preorder(struct node*root) {
+    if (root != NULL) {
+        printf("%d ", root->data);
+        traverse_preorder(root->left);
+        traverse_preorder(root->right);
+    }
+}
+```
+<br/>
+
+C code for postorder traversal would be:
+
+```c
+void traverse_postorder(struct node*root) {
+    if (root != NULL) {
+        traverse_postorder(root->left);
+        traverse_postorder(root->right);
+        printf("%d ", root->data);
+    }
+}
+```
+
+And lastly, the C code for inorder traversal would be:
+
+```c
+void traverse_inorder(struct node*root) {
+    if (root != NULL) {
+        traverse_inorder(root->left);
+        printf("%d ", root->data);
+        traverse_inorder(root->right);
+    }
+}
+```

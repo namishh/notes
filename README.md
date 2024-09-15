@@ -17,8 +17,19 @@ My handcrafted DSA and programming notes. Please do not waste your savings on "b
   - [x] [Memory Management For Dummies](https://notes.namishh.me/pre/memory)
 - Algorithms
   - [x] [Time Complexity](https://notes.namishh.me/algo/complexity)
+  - [ ] Recursion
+  - [ ] Bit Manipulation
 - Data Structures
   - [ ] Queues
   - [ ] Stacks
+  - [ ] Linked Lists
+    - [ ] Normal
+    - [ ] Doubly
+    - [ ] Circular
+  - [ ] Tree
+    - [ ] Binary
+    - [ ] BST
+    - [ ] B-Trees
+    - [ ] AVL Trees
 
 ... more to come
