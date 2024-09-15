@@ -10,7 +10,7 @@ import Diagram from "../../comp/diagram.jsx"
 
 <Diagram src="/trees/tree-header.png"/>
 
-<div className="bg-blue-300/10 dark:bg-surface-blue/30 border-l-[1px] rounded-r-md border-primary dark:text-primary text-blue-500 text-[16px] p-3">
+<div className="bg-blue-300/10 my-4 dark:bg-surface-blue/30 border-l-[1px] rounded-r-md border-primary dark:text-primary text-blue-500 text-[16px] p-3">
 This is my first post on any data strcuture. Normally a person would have started with something sane like Linked Lists, but I needed to learn about trees for a project I was working on. So, here we are.
 </div>
 
@@ -59,4 +59,75 @@ The left child is **always smaller than the parent** and the right child is alwa
 
 ### Representation Of Binary Trees
 
-The first and the worse way of representing a binary tree is by using arrays.
+The first and the worse way of representing a binary tree is by using arrays. The array is filled from left to right starting from the root. If a node does not have a child, then we will a NULL in its place.
+
+Let us take an example
+
+<Diagram src="/trees/example.png"/>
+
+The array representation of the above tree would be:
+
+```
+[6, 2, 3, 4, NULL, 1, 9]
+```
+
+But this practice is almost never used because it is very inefficient. The second way of representing a binary tree is by using **linked lists**.
+
+<div className="bg-blue-300/10 my-4 dark:bg-surface-blue/30 border-l-[1px] rounded-r-md border-primary dark:text-primary text-blue-500 text-[16px] p-3">
+As of the day of writing this, Sep 2024, I have not yet posted about Linked Lists. But I will soon. So, stay tuned.
+</div>
+
+### Linked Representation
+
+<Diagram src="/trees/example.png"/>
+
+Let us take the same example as above. Now we will express each node as a structure with 3 things, the value, the **address** of the left node and **the  address** of the right node.
+
+```c
+// If you already know some DSA
+// you might find this similar to a doubly linked list.
+struct Node {
+    int data;
+    struct Node* left;
+    struct Node* right;
+};
+```
+
+The linked representation of the above tree wouuld look like
+
+<Diagram src="/trees/linked-representation.png"/>
+
+So let us define a very basic binary tree in C.
+
+```c
+struct Node *root;
+root = (struct Node*)malloc(sizeof(struct Node)); // Allocating memory for the root node
+root->data = 6;
+root->left = NULL;
+root->right = NULL;
+```
+
+Here we have the most basic of a binary tree which has only 1 node (the root). If you did not understand what I did in the second line, please refer to my post on [Dynamic Memory Allocation](/pre/memory).
+
+Now let us add some more nodes to extend this root
+
+```c
+struct Node *p1, *p2;
+p1 = (struct Node*)malloc(sizeof(struct Node));
+p2 = (struct Node*)malloc(sizeof(struct Node));
+
+p1->data = 2;
+p1->left = NULL;
+p1->right = NULL;
+
+p2->data = 3;
+p2->left = NULL;
+p2->right = NULL;
+```
+
+Now we can attach these newly created nodes to the root
+
+```c
+root->left = p1;
+root->right = p2;
+```
