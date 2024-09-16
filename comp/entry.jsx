@@ -5,7 +5,7 @@ const Entry = ({ text, link, level }) => {
   let color = "";
   if (level == "1") {
     t = "Novice";
-    color = "bg-primary";
+    color = "difficulty-novice";
   } else if (level == "2") {
     t = "Amateur";
     color = "difficulty-amateur";

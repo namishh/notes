@@ -44,6 +44,11 @@
     @apply bg-amber-300;
 }
 
+
+.markdown-content .difficulty-novice {
+    @apply bg-primary;
+}
+
 .markdown-content .difficulty-advance {
     @apply bg-rose-400;
 }
