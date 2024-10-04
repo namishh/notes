@@ -1,6 +1,6 @@
 ---
 type: page
-title: Binary Trees and B-Trees
+title: Binary Trees
 tag: Data Structures
 author: Namish
 ---
@@ -25,7 +25,7 @@ Some of the basic terminologies that would be common for **alls kinds of trees**
 5. **Siblings**: Nodes that share the same parent. In the above example, **3** and **9** are siblings.
 6. **Internal Node**: A single element in a tree that has atleast 1 child. In the above example, **4** is a node.
 7. **Depth Of A Node**: Can be defined as the number of branches between the node and the root.
-8. **Height Of A Node**: Can be defined as the number of branches between the node and the deepest leaf.
+8. **Height Of A Tree**: Can be defined as the number of branches between the node and the deepest leaf.
 9. **Ancestor**: A node that lies on the path between the root and the node. In the above example, **4** is an ancestor of **3**.
 10. **Descendant**: A node that lies on the path between the node and the leaf. In the above example, **3** is a descendant of **4**.
 11. **Degree Of A Node**: The number of children a node has.
@@ -202,3 +202,38 @@ void traverse_inorder(struct node*root) {
     }
 }
 ```
+
+### Finding the height of a binary tree.
+
+Height of the binary tree is the longest path between the root node and a leaf node.
+
+```c 
+int height(struct Node* root) {
+  // base case: 
+  if (root == NULL) {
+    return 0;
+  }
+
+  int left = height(root->left);
+  int right = height(root->right);
+
+  if (left > right) {
+    return left + 1;
+  } else {
+    return right + 1;
+  }
+}
+```
+
+Let us again take our example binary tree
+<Diagram src="/trees/bt-height.png"/>
+
+So starting from the root node **6**, it is clearly not, null, so it goes to 2 and 3. Now taking 2 individually, as 2 is obviously not null, it will go to the left node and the right node of it as well (we will come to this in a second). 
+
+Now when it will come to 4, both of it has **NULL** as its children, a.k.a 0, so it returns **MAX(0,0) + 1**, which is 1. Following this, 2 has recieved a value of 1 from its left side, and its right side is **NULL**, so it returns **MAX(0, 1) + 1**, which is 2.
+
+So now, 6 has recieved a value of **2** from its left sub-branch. If we follow this pattern on the right as well, it will also receive a value of **2** from the right. The final height of the tree would be **MAX(2,2)**, which is equal to 3. Hence we arrive at our final answer.
+
+### Width / Diameter of a binary tree.
+
+Width / Diameter of a binary tree is the farthest distance between any two nodes.
