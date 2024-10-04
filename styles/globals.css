@@ -92,6 +92,7 @@
 }
 
 .markdown-content code {
+    @apply text-[15px];
     font-family: "Victor Mono";
 }
 

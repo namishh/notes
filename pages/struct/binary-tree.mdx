@@ -233,7 +233,99 @@ So starting from the root node **6**, it is clearly not, null, so it goes to 2 a
 Now when it will come to 4, both of it has **NULL** as its children, a.k.a 0, so it returns **MAX(0,0) + 1**, which is 1. Following this, 2 has recieved a value of 1 from its left side, and its right side is **NULL**, so it returns **MAX(0, 1) + 1**, which is 2.
 
 So now, 6 has recieved a value of **2** from its left sub-branch. If we follow this pattern on the right as well, it will also receive a value of **2** from the right. The final height of the tree would be **MAX(2,2)**, which is equal to 3. Hence we arrive at our final answer.
+<br/>
+
+It should not be TOO hard to create code for the minimum depth, so it is a challenge for you to figure out on your own. But here is the code regardless.
+
+```c 
+int minDepth(struct TreeNode* root) {
+  if (root == NULL) {
+    return 0;
+  }
+  if (root->left == NULL && root->right == NULL)
+    return 1;
+
+  int left = INT_MAX;
+  int right = INT_MAX;
+
+  if (root->left != NULL) {
+  left = minDepth(root->left);
+  }
+
+  if (root->right != NULL) {
+  right = minDepth(root->right);
+  }
+
+  if (left < right) {
+    return left + 1;
+  } else {
+    return right + 1;
+  }
+}
+```
+
+`INT_MAX` is used as a placeholder for an invalid or non-existent value when computing the minimum depth of a binary tree. `INT_MAX` represents the largest possible integer value (essentially infinity in this case) to ensure that non-existent child nodes do not affect the minimum calculation.
 
 ### Width / Diameter of a binary tree.
 
 Width / Diameter of a binary tree is the farthest distance between any two nodes.
+
+```c
+int height(struct Node* root) {
+  if (root == NULL) {
+    return 0;
+  }
+
+  int left = height(root->left);
+  int right = height(root->right);
+
+  if (left > right) {
+    return left + 1;
+  } else {
+    return right + 1;
+  }
+}
+
+int diameterOfBinaryTree(struct TreeNode* root) {
+  if (root == NULL) {
+    return 0;
+  }
+
+  int a = diameterOfBinaryTree(root->left);
+  int b = diameterOfBinaryTree(root->right);
+  int c = height(root->left) + height(root->right);
+
+  if (a > b && a > c)
+      return a;
+  if (b > a && b > c)
+      return b;
+  if (c > a && c > b)
+      return c;
+}
+```
+
+Well, when we search for the diameter, its not necessary that it will span from the left subtree to the root to the right subtree. There are 3 ways to get the diameter: 
+
+1. You start from left subtree and end in the left subtree, which is why we call `diameterOfBinaryTree(root->left)`.
+2. You start from the right subtree and end in the right subtree, which is why we call `diameterOfBinaryTree(root->right)`.
+3. You start from the left subtree and end in the right subtree, which is why we call `height(root->left) + height(root->right)`.
+
+<br/>
+
+### Checking for balanced trees
+
+A definition for a balanced tree is that if the difference between heights of left and eight subtree is **not more than one** for all nodes of the tree.
+
+<Diagram src="/trees/balanced.png"/>
+
+So to basically speak, we can create this formula 
+
+<br/>
+
+<div align="center">
+
+$$ |h(left) - h(right)| <= 1 $$
+
+</div>
+
+<br/>
