@@ -11,7 +11,7 @@ import Diagram from "../../comp/diagram.jsx"
 <Diagram src="/trees/tree-header.png"/>
 
 <div className="bg-blue-300/10 my-4 dark:bg-surface-blue/30 border-l-[1px] rounded-r-md border-primary dark:text-primary text-blue-500 text-[16px] p-3">
-This is my first post on any data strcuture. Normally a person would have started with something sane like Linked Lists, but I needed to learn about trees for a project I was working on. So, here we are.
+Please have a strong hand at recursion before starting this.
 </div>
 
 Trees are a kind of non-linear data structure that is used to store data in a hierarchical manner.
@@ -271,7 +271,7 @@ int minDepth(struct TreeNode* root) {
 Width / Diameter of a binary tree is the farthest distance between any two nodes.
 
 ```c
-int height(struct Node* root) {
+int height(struct TreeNode* root) {
   if (root == NULL) {
     return 0;
   }
@@ -312,6 +312,57 @@ Well, when we search for the diameter, its not necessary that it will span from 
 
 <br/>
 
+But a problem with this *bruteforced* technique is that we have another recursive call inside a recursive call, which essentially makes our time complexity `O(n^2)`. So we need some way to not call the `height` function. Let us create a new function and a new struct outside our main `diameterOfBinaryTree` function.
+
+```c 
+struct Pair {
+  int first;
+  int second;
+};
+
+struct Pair diameterFast(struct TreeNode* root) {
+  if (root == NULL) {
+    struct Pair p = {0, 0};
+    return p;
+  }
+
+  struct Pair left = diameterFast(root->left);
+  struct Pair right = diameterFast(root->right);
+
+  int a = left.first;
+  int b = right.first;
+  int c = left.second + right.second;
+
+  struct Pair pair;
+
+  if (a > b && a > c) {
+    pair.first = a;
+  } else if (b > a && b > c) {
+    pair.first = b;
+  } else if (c > a && c > b) {
+    pair.first = c;
+  }
+
+  if  (left.second > right.second) {
+    pair.second = left.second + 1;
+  } else {
+    pair.second = right.second + 1;
+  }
+
+  return pair;
+}
+```
+
+And now using this function, in our main function.
+
+```c 
+int diameterOfBinaryTree(struct TreeNode* root) {
+  return diameterFast(root).first;
+}
+```
+
+If it not obvious, in the `Pair` struct, we save `second` as the height of the trees as we go along the tree, so we need not make another height function to calculate it.
+
 ### Checking for balanced trees
 
 A definition for a balanced tree is that if the difference between heights of left and eight subtree is **not more than one** for all nodes of the tree.
@@ -329,3 +380,77 @@ $$ |h(left) - h(right)| <= 1 $$
 </div>
 
 <br/>
+
+and looking up to our previous code, we know how to find the height. so simply coding it we get 
+
+```c 
+int isBalanced(struct TreeNode *root) {
+  if (root == NULL) {
+    return 1;
+  }
+
+  int left = isBalanced(root->left);
+  int right = isBalanced(root->right);
+
+  int diff = abs(height(root->left) - height(root->right));
+
+  if (left && right && diff) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+```
+
+But with this solution, we arrive at the same dilemma, the time complexity being `O(n^2)`. We need to track the height while travesing.
+
+```c
+struct Pair isBalancedFast(struct TreeNode* root) {
+  if (root == NULL) {
+    struct Pair p = {0, 0};
+    return p;
+  }
+
+  struct Pair left = isBalancedFast(root->left);
+  struct Pair right = isBalancedFast(root->right);
+
+  int a = left.first;
+  int b = right.first;
+  int c = abs(left.second + right.second) <= 1;
+
+  struct Pair pair;
+
+  if (a && b && c) {
+    pair.first = 1;
+  } else {
+    pair.first = 0;
+  }
+
+  if  (left.second > right.second) {
+    pair.second = left.second + 1;
+  } else {
+    pair.second = right.second + 1;
+  }
+
+  return pair;
+}
+```
+
+and then using this function in our main function, we get 
+
+```c
+int isBalanced(struct TreeNode *root) {
+  return isBalancedFast(root).first;
+}
+```
+
+<div className="bg-blue-300/10 my-4 dark:bg-surface-blue/30 border-l-[1px] rounded-r-md border-primary dark:text-primary text-blue-500 text-[16px] p-3">
+I will continue from here when I have completed Stacks and Queues
+</div>
+
+
+### Zig Zag Traversal
+
+<Diagram src="/trees/zigzag.png"/>
+
+Zig Zag traversal is pretty easy to understand, we go once left to right then on next layer right to left, and then we alternate between these until we reach the end of the tree.
