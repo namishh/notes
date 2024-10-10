@@ -1,0 +1,78 @@
+---
+type: page
+title: Stacks 
+tag: Data Structures
+author: Namish
+---
+import Diagram from "../../comp/diagram.jsx"
+
+# Stacks 
+
+<Diagram src="/stacks/stacks.png" />
+
+If we stack up plates one on top of another, and take one out it, its obvious that the last one we stacked, will be the first to be take out. This is called the **LIFO** principle (last in, first out) and this is what, the stack data structure is based on. There are basically only two major operations in stack:
+
+1. Push: adds an item to the top.
+2. Pop: removes the top most item.
+
+
+### Implementation of stack
+
+In this implementation, we will have two structs, one for the stack itself, and other for each item in the stack.
+
+```c 
+struct Item {
+  int data;
+  struct Item* next;
+};
+
+struct Stack {
+  struct Item* head;
+}
+```
+
+In the Item struct, we have a data field which holds the info for that item and then we have a [pointer](/pre/pointers) to another Item, which would the next item that comes in the stack.
+
+<Diagram src="/stacks/stack-representation.png"/>
+
+
+So let us just create a function to make us a new stack.
+
+```c 
+struct Stack new_stack() {
+  struct Stack stack;
+  stack.head = NULL;
+  return stack;
+}
+
+int main() {
+  struct Stack stack1 = new_stack();
+}
+```
+
+Initially, it will have 0 elements, so it's `head` is set to `null`.
+
+We can check if a stack is empty by using this function:
+
+```c
+int is_stack_empty(struct Stack* stack) {
+  return stack->head == NULL;
+}
+```
+
+Let us now create a function to push a new element onto the stack;
+
+```c
+void push_stack(struct Stack *stack, int data) {
+  struct Item* new_item = (Item*)malloc(sizeof(Item));
+  new_item->data = data;
+  new_item->next = stack->head;
+  stack->head = new_item;
+}
+```
+
+In this method, first we create a new item via [malloc](/pre/memory#dynamic-memory-allocation). After assigning it the data we passed, we point to the element which is currently in the top of the stack, to the `new_item's next pointer` and then we set the head of our stack and new item. This allows our `new_item` to be on the top of the stack.
+
+<br/>
+
+Removing the top item from the stack is not hard either.
