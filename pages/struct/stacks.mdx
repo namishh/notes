@@ -1,6 +1,6 @@
 ---
 type: page
-title: Stacks 
+title: Stacks and Queues 
 tag: Data Structures
 author: Namish
 ---
@@ -76,3 +76,42 @@ In this method, first we create a new item via [malloc](/pre/memory#dynamic-memo
 <br/>
 
 Removing the top item from the stack is not hard either.
+
+```c 
+void pop_stack(struct Stack *stack, int data) { 
+  if (!is_stack_empty(stack)) {
+    struct Item* temp = stack->head;
+    stack->head = stack->head->next; 
+    free(temp);
+  }
+}
+```
+
+`struct Item* temp = stack->head;` is necessary to safely remove the top item of the stack without losing the reference to it, allowing you to free the memory associated with that item.
+
+Another method we need is to get the top most element of stack. This is known as a `peek`.
+
+```c 
+int pop_stack(struct Stack *stack, int data) { 
+  if (!is_stack_empty(stack)) {
+    return stack->head->data;
+  }
+}
+```
+
+To traverse a stack, we can use a `while loop` till `stack->head` becomes `NULL`.
+
+```c 
+void traverse_stack(struct Stack *stack) {
+  struct Item* head = stack->head;
+  while (head != NULL) {
+    printf("%d", head->item);
+    head = head->next;
+  } 
+}
+```
+And these are, mainly the functions you would need to implement a stack in C.
+
+# Queues
+
+<Diagram src="/stacks/queue.png"/>
